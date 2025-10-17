@@ -1,0 +1,6 @@
+#!/bin/zsh
+# This installs Oh My Zsh only if the directory doesn't exist
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "Installing Oh My Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
