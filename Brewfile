@@ -1,6 +1,5 @@
 brew "aider"
 brew "bash"
-brew "chezmoi"
 brew "fd"
 brew "ffmpeg"
 brew "flyctl"
