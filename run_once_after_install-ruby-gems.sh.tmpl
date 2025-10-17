@@ -9,12 +9,21 @@ if ! command -v gem &> /dev/null; then
   exit 0
 fi
 
-# Install colorls
+# Install colorls to user directory (avoid sudo)
 if ! gem list -i colorls &> /dev/null; then
-  echo "Installing colorls..."
-  gem install colorls
+  echo "Installing colorls to user gem directory..."
+  gem install --user-install colorls
 else
   echo "colorls already installed"
+fi
+
+# Add user gem bin to PATH if not already there
+USER_GEM_BIN="$(ruby -e 'puts Gem.user_dir')/bin"
+if [[ ":$PATH:" != *":$USER_GEM_BIN:"* ]]; then
+  echo "Adding user gem bin to PATH in ~/.zshrc"
+  echo "" >> ~/.zshrc
+  echo "# User gem binaries" >> ~/.zshrc
+  echo "export PATH=\"$USER_GEM_BIN:\$PATH\"" >> ~/.zshrc
 fi
 
 echo "Ruby gems installation complete!"

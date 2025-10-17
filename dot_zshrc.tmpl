@@ -114,6 +114,9 @@ source $ZSH/oh-my-zsh.sh
 # Chruby path (work only)
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+{{- else }}
+# Use Homebrew Ruby on personal machines (system Ruby is too old)
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 {{- end }}
 
 # Color ls alias (requires colorls gem)
@@ -122,7 +125,6 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -135,7 +137,6 @@ chruby ruby-3.4.4
 # Custom scripts (work only)
 alias change_git_config="~/code/scripts/github-local.sh"
 {{- end }}
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"

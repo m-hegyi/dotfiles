@@ -1,5 +1,6 @@
 brew "aider"
 brew "bash"
+brew "ruby"
 brew "fd"
 brew "ffmpeg"
 brew "flyctl"
