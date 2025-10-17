@@ -1,0 +1,15 @@
+#!/bin/bash
+{{- if eq .chezmoi.os "darwin" }}
+
+ITERM_PREFS_DIR="$HOME/.config/iterm2"
+
+echo "Setting up iTerm2 preferences..."
+
+# Tell iTerm2 to use the custom preferences directory
+defaults write com.googlecode.iterm2 PrefsCustomFolder "$ITERM_PREFS_DIR"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+echo "iTerm2 preferences directory set to: $ITERM_PREFS_DIR"
+echo "Please restart iTerm2 for the changes to take effect"
+
+{{- end }}
