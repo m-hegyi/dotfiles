@@ -1,0 +1,26 @@
+#!/bin/bash
+{{- if eq .chezmoi.os "darwin" }}
+
+echo "Installing Ruby gems..."
+
+# Check if gem is available
+if ! command -v gem &> /dev/null; then
+  echo "Ruby/gem not found. Skipping gem installation."
+  exit 0
+fi
+
+# Install colorls
+if ! gem list -i colorls &> /dev/null; then
+  echo "Installing colorls..."
+  gem install colorls
+else
+  echo "colorls already installed"
+fi
+
+echo "Ruby gems installation complete!"
+
+{{- else }}
+
+echo "Skipping Ruby gems (not macOS)"
+
+{{- end }}
