@@ -1,0 +1,26 @@
+-- Updated to use vim.lsp.config API
+local on_attach = require("nvchad.configs.lspconfig").on_attach
+local on_init = require("nvchad.configs.lspconfig").on_init
+local capabilities = require("nvchad.configs.lspconfig").capabilities
+
+local servers = { "html", "cssls", {{- if eq .machine_type "work" }}"solargraph", {{- end }}"rust_analyzer", "ts_ls", "eslint", "astro", "markdown_oxide", "tailwindcss"}
+
+-- lsps with default config
+for _, lsp in ipairs(servers) do
+  vim.lsp.config(lsp, {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+  })
+  vim.lsp.enable(lsp)
+end
+
+-- biome specific config
+vim.lsp.config("biome", {
+  cmd = { "npx", "biome", "lsp-proxy" },
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  root_dir = vim.fs.root(0, { "biome.json" }),
+})
+vim.lsp.enable("biome")

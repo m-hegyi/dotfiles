@@ -1,0 +1,212 @@
+return {
+  {
+    "stevearc/conform.nvim",
+    -- event = "BufWritePre", -- uncomment for format on save
+    config = function()
+      require "configs.conform"
+    end,
+  },
+
+  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
+  --
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "stylua",
+        "html-lsp",
+        "css-lsp",
+        "biome",
+        "eslint-lsp",
+        "typescript-language-server",
+{{- if eq .machine_type "work" }}
+        "solargraph",
+        "ruby-lsp",
+{{- end }}
+      },
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>cx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+    },
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<C-h>", "<cmd><C-B>TmuxNavigateLeft<cr>" },
+      { "<C-j>", "<cmd><C-B>TmuxNavigateDown<cr>" },
+      { "<C-k>", "<cmd><C-B>TmuxNavigateUp<cr>" },
+      { "<C-l>", "<cmd><C-B>TmuxNavigateRight<cr>" },
+      { "<C-\\>", "<cmd><C-B>TmuxNavigatePrevious<cr>" },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+{{- if eq .machine_type "work" }}
+        "ruby",
+{{- end }}
+        "javascript",
+        "typescript",
+        "tsx",
+        "markdown",
+        "markdown_inline",
+        "astro",
+      },
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      indent = {
+        enable = true,
+        disable = { "yaml"{{- if eq .machine_type "work" }}, "ruby"{{- end }} },
+      },
+      rainbow = {
+        enable = true,
+        extended_mode = true,
+        max_file_line = nil,
+      },
+    },
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = function()
+      require("ts_context_commentstring").setup {
+        enable_autocmd = false,
+      }
+    end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
+      },
+    },
+    -- config = function()
+    --   local telescope = require "telescope"
+    --
+    --   telescope.load_extension("live_grep_args")
+    -- end,
+    opts = function()
+      local telescope = require "telescope"
+
+      telescope.load_extension "live_grep_args"
+      local conf = require "nvchad.configs.telescope"
+      conf.defaults = conf.defaults or {}
+      -- conf.defaults.path_display = { "smart" }
+      conf.defaults.path_display = function(opts, path)
+        local tail = require("telescope.utils").path_tail(path)
+        return string.format("%s - %s", tail, path)
+      end
+
+      return conf
+    end,
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    config = function()
+      require("codecompanion").setup {
+        opts = {
+          log_level = "DEBUG",
+        },
+        strategies = {
+          chat = {
+            adapter = {
+              name = "copilot",
+              model = "claude-sonnet-4",
+            },
+          },
+        },
+        display = {
+          action_palette = {
+            provider = "telescope",
+          },
+        },
+      }
+    end,
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function()
+      vim.g.copilot_assume_mapped = true -- Assume keymaps are defined
+      -- Optional: Add other settings here
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+  },
+  { "echasnovski/mini.nvim", version = false },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    lazy = false,
+    ft = {
+      "markdown",
+      "codecompanion",
+    },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
+}

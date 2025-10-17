@@ -1,0 +1,23 @@
+#!/bin/bash
+# Install NvChad base configuration
+
+NVCHAD_DIR="$HOME/.local/share/nvim"
+
+if [ ! -d "$NVCHAD_DIR/lazy/NvChad" ]; then
+  echo "Installing NvChad..."
+
+  # Backup existing nvim data if it exists
+  if [ -d "$NVCHAD_DIR" ]; then
+    echo "Backing up existing nvim data..."
+    mv "$NVCHAD_DIR" "$NVCHAD_DIR.backup.$(date +%Y%m%d%H%M%S)"
+  fi
+
+  # NvChad will be installed when you first run nvim with your config
+  echo "NvChad will be installed automatically when you first run nvim"
+  echo "Your custom config is already in place at ~/.config/nvim"
+else
+  echo "NvChad already installed"
+fi
+
+echo "Neovim setup complete!"
+echo "Run 'nvim' to complete the setup and install plugins"

@@ -1,0 +1,23 @@
+local options = {
+  formatters_by_ft = {
+    lua = { "stylua" },
+    rust = { "rustfmt", lsp_fallback = "fallback" },
+    css = { "biome" },
+    html = { "biome" },
+    javascript = { "biome" },
+    typescript = { "biome" },
+    javascriptreact = { "biome" },
+    typescriptreact = { "biome" },
+{{- if eq .machine_type "work" }}
+    ruby = { "rubocop" },
+{{- end }}
+  },
+
+  -- format_on_save = {
+  --   -- These options will be passed to conform.format()
+  --   timeout_ms = 500,
+  --   lsp_fallback = true,
+  -- },
+}
+
+require("conform").setup(options)
