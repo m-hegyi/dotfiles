@@ -1,0 +1,33 @@
+#!/bin/bash
+# Install Tmux Plugin Manager (TPM) and plugins
+
+echo "Setting up tmux plugins..."
+
+# Install TPM if it doesn't exist
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  echo "Installing TPM (Tmux Plugin Manager)..."
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  echo "TPM already installed"
+fi
+
+# Install catppuccin theme if it doesn't exist
+if [ ! -d "$HOME/.config/tmux/plugins/catppuccin" ]; then
+  echo "Installing catppuccin theme..."
+  mkdir -p ~/.config/tmux/plugins
+  git clone https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin
+else
+  echo "catppuccin already installed"
+fi
+
+# Install vim-tmux-navigator if it doesn't exist
+if [ ! -d "$HOME/.config/tmux/plugins/vim-tmux-navigator" ]; then
+  echo "Installing vim-tmux-navigator..."
+  mkdir -p ~/.config/tmux/plugins
+  git clone https://github.com/christoomey/vim-tmux-navigator.git ~/.config/tmux/plugins/vim-tmux-navigator
+else
+  echo "vim-tmux-navigator already installed"
+fi
+
+echo "Tmux plugins setup complete!"
+echo "Note: Run 'prefix + I' in tmux to install TPM-managed plugins (like tmux-resurrect)"
