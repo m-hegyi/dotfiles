@@ -57,11 +57,27 @@ if [ "$MACHINE_TYPE" != "work" ] && [ "$MACHINE_TYPE" != "personal" ]; then
   exit 1
 fi
 
+echo "Is this a laptop? (y/n):"
+read -r IS_LAPTOP
+
+if [ "$IS_LAPTOP" != "y" ] && [ "$IS_LAPTOP" != "n" ]; then 
+  echo "Error: Please enter 'y' or 'n'"
+  exit 1
+fi
+
+# Convert y/n to boolean
+if [ "$IS_LAPTOP" = "y" ]; then
+  IS_LAPTOP_BOOL="true"
+else
+  IS_LAPTOP_BOOL="false"
+fi
+
 # Create chezmoi config
 mkdir -p "$HOME/.config/chezmoi"
 cat > "$HOME/.config/chezmoi/chezmoi.toml" <<EOF
 [data]
     machine_type = "$MACHINE_TYPE"
+    is_laptop = $IS_LAPTOP_BOOL
 EOF
 
 echo "Config created with machine_type = $MACHINE_TYPE"

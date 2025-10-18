@@ -155,3 +155,9 @@ alias canvas="cd ~/code/canvas-lms"
 alias rspec="docker compose exec web bundle exec rspec"
 alias jest="docker compose exec web bundle exec yarn test:jest"
 {{- end }}
+
+{{- if eq .machine_type "personal" }}
+
+# User gem binaries
+export PATH="/Users/mario.hegyi/.gem/ruby/3.4.0/bin:$PATH"
+{{- end }}
