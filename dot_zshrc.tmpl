@@ -160,4 +160,11 @@ alias jest="docker compose exec web bundle exec yarn test:jest"
 
 # User gem binaries
 export PATH="/Users/mario.hegyi/.gem/ruby/3.4.0/bin:$PATH"
+
+# Created by `pipx` on 2025-11-02 13:12:17
+export PATH="$PATH:/Users/mario.hegyi/.local/bin"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 {{- end }}
