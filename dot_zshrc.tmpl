@@ -129,10 +129,9 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export AWS_DEFAULT_REGION=us-east-1
-
 {{- if eq .machine_type "work" }}
-chruby ruby-3.4.4
+
+export AWS_DEFAULT_REGION=us-east-1
 
 # Custom scripts (work only)
 alias change_git_config="~/code/scripts/github-local.sh"
