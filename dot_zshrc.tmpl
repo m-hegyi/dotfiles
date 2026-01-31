@@ -167,3 +167,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 {{- end }}
+
+{{- if eq .machine_type "personal" }}
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mario.hegyi/.lmstudio/bin"
+# End of LM Studio CLI section
+{{- end }}
