@@ -1,0 +1,42 @@
+{
+  "schemes" : [
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
+        "acceleration" : {
+          "vertical" : 1
+        }
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x1038",
+          "category" : "mouse",
+          "productName" : "SteelSeries Rival 110 Gaming Mouse",
+          "productID" : "0x1729"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.75,
+        "disableAcceleration" : true
+      }
+    },
+    {
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
+      },
+      "if" : {
+        "device" : {
+          "productID" : "0x0",
+          "vendorID" : "0x0",
+          "category" : "trackpad",
+          "productName" : "Apple Internal Keyboard \/ Trackpad"
+        }
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+}
