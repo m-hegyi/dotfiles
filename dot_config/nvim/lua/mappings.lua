@@ -13,12 +13,34 @@ map("n", "<C-l>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- Terminal mode
-map("t", "<ESC>", "<C-\\><C-N>", { silent = true })
-map("t", "jk", "<C-\\><C-N>", { silent = true })
+-- Don't map ESC or jk globally for terminals - it interferes with lazygit
+-- Instead, we'll set it up via autocmd for non-lazygit terminals only
 map("t", "<C-h>", "<C-\\><C-N><C-w>h", { noremap = true, silent = true })
 map("t", "<C-j>", "<C-\\><C-N><C-w>j", { noremap = true, silent = true })
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", { noremap = true, silent = true })
 map("t", "<C-l>", "<C-\\><C-N><C-w>l", { noremap = true, silent = true })
+
+-- Apply ESC and "jk" mappings only to regular terminals, not lazygit
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function(args)
+    vim.defer_fn(function()
+      local bufname = vim.api.nvim_buf_get_name(args.buf)
+
+      -- Check if this is a lazygit terminal
+      local is_lazygit = bufname:match("lazygit") ~= nil
+
+      if is_lazygit then
+        -- Explicitly unmap ESC and "jk" for lazygit to ensure they don't interfere
+        pcall(vim.keymap.del, "t", "<ESC>", { buffer = args.buf })
+        pcall(vim.keymap.del, "t", "jk", { buffer = args.buf })
+      else
+        -- Apply ESC and "jk" mappings for regular terminals
+        vim.keymap.set("t", "<ESC>", "<C-\\><C-N>", { buffer = args.buf, silent = true })
+        vim.keymap.set("t", "jk", "<C-\\><C-N>", { buffer = args.buf, silent = true })
+      end
+    end, 100)
+  end,
+})
 
 
 -- telescope 
