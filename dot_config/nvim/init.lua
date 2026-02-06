@@ -58,6 +58,7 @@ local function toggle_telescope(harpoon_files)
         sorter = conf.generic_sorter({}),
     }):find()
 end
+require("telescope").load_extension("lazygit")
 
 vim.keymap.set("n", "<leader>fe", function() toggle_telescope(harpoon:list()) end,
     { desc = "telescope harpoon marked list" })
