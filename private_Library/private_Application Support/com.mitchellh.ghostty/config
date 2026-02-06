@@ -52,3 +52,4 @@ theme = Catppuccin Mocha
 
 font-family = Hack Nerd Font Mono Regular
 font-size = 16
+macos-option-as-alt = true
