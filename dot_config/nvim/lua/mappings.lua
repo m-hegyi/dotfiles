@@ -12,6 +12,10 @@ map("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
 map("n", "<C-l>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
+-- Visual mode: Move selected lines up/down
+map("v", "<C-j>", ":move '>+1<CR>gv", { noremap = true, silent = true, desc = "Move line(s) down" })
+map("v", "<C-k>", ":move '<-2<CR>gv", { noremap = true, silent = true, desc = "Move line(s) up" })
+
 -- Terminal mode
 -- Don't map ESC or jk globally for terminals - it interferes with lazygit
 -- Instead, we'll set it up via autocmd for non-lazygit terminals only
