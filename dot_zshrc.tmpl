@@ -153,6 +153,10 @@ export PUPPETEER_EXECUTABLE_PATH=/Applications/Google\ Chrome.app/Contents/MacOS
 alias canvas="cd ~/code/canvas-lms"
 alias rspec="docker compose exec web bundle exec rspec"
 alias jest="docker compose exec web bundle exec yarn test:jest"
+fpath=(~/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
 {{- end }}
 
 {{- if eq .machine_type "personal" }}
