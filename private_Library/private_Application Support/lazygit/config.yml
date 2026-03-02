@@ -1,0 +1,3 @@
+os:
+  edit: "nvim --server $NVIM --remote-send '<cmd>q<cr><cmd>lua EditFromLazygit({{filename}})<cr>'"
+  editAtLine: "nvim --server $NVIM --remote-send '<cmd>q<cr><cmd>lua EditLineFromLazygit({{filename}}, {{line}})<cr>'"

@@ -69,3 +69,22 @@ vim.filetype.get_option = function(filetype, option)
     and require("ts_context_commentstring.internal").calculate_commentstring()
     or get_option(filetype, option)
 end
+
+function EditFromLazygit(file_path)
+  local path = vim.fn.expand("%:p")
+  if path == file_path then
+    return
+  else
+    vim.cmd("e" .. file_path)
+  end
+end
+
+function EditLineFromLazygit(file_path, line)
+    local path = vim.fn.expand("%:p")
+    if path == file_path then
+        vim.cmd(tostring(line))
+    else
+        vim.cmd("e " .. file_path)
+        vim.cmd(tostring(line))
+    end
+end
