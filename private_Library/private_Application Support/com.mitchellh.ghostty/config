@@ -53,3 +53,15 @@ theme = Catppuccin Mocha
 font-family = Hack Nerd Font Mono Regular
 font-size = 16
 macos-option-as-alt = true
+
+# Override the Catppuccin palette for better contrast
+# ANSI 4 (Blue) and ANSI 1 (Red)
+palette = 4=#1e66f5
+palette = 1=#d20f39
+
+# If the "bright" versions are the problem (ANSI 12 and 9)
+palette = 12=#7287fd
+palette = 9=#e64553
+
+# Higher value = more aggressive contrast correction
+minimum-contrast = 1.1
