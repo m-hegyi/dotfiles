@@ -177,3 +177,14 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export PATH="$PATH:/Users/mario.hegyi/.lmstudio/bin"
 # End of LM Studio CLI section
 {{- end }}
+
+{{- if eq .machine_type "work" }}
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mario.hegyi/.lmstudio/bin"
+# End of LM Studio CLI section
+{{- end }}
+
+alias lg="lazygit"
+{{- if eq .machine_type "work" }}
+alias ld="lazydocker"
+{{- end }}
