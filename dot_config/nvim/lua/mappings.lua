@@ -1,4 +1,4 @@
-require "nvchad.mappings"
+require("nvchad.mappings")
 
 -- add yours here
 
@@ -26,49 +26,48 @@ map("t", "<C-l>", "<C-\\><C-N><C-w>l", { noremap = true, silent = true })
 
 -- Apply ESC and "jk" mappings only to regular terminals, not lazygit
 vim.api.nvim_create_autocmd("TermOpen", {
-  callback = function(args)
-    vim.defer_fn(function()
-      local bufname = vim.api.nvim_buf_get_name(args.buf)
+	callback = function(args)
+		vim.defer_fn(function()
+			local bufname = vim.api.nvim_buf_get_name(args.buf)
 
-      -- Check if this is a lazygit terminal
-      local is_lazygit = bufname:match("lazygit") ~= nil
+			-- Check if this is a lazygit terminal
+			local is_lazygit = bufname:match("lazygit") ~= nil
 
-      if is_lazygit then
-        -- Explicitly unmap ESC and "jk" for lazygit to ensure they don't interfere
-        pcall(vim.keymap.del, "t", "<ESC>", { buffer = args.buf })
-        pcall(vim.keymap.del, "t", "jk", { buffer = args.buf })
-      else
-        -- Apply ESC and "jk" mappings for regular terminals
-        vim.keymap.set("t", "<ESC>", "<C-\\><C-N>", { buffer = args.buf, silent = true })
-        vim.keymap.set("t", "jk", "<C-\\><C-N>", { buffer = args.buf, silent = true })
-      end
-    end, 100)
-  end,
+			if is_lazygit then
+				-- Explicitly unmap ESC and "jk" for lazygit to ensure they don't interfere
+				pcall(vim.keymap.del, "t", "<ESC>", { buffer = args.buf })
+				pcall(vim.keymap.del, "t", "jk", { buffer = args.buf })
+			else
+				-- Apply ESC and "jk" mappings for regular terminals
+				vim.keymap.set("t", "<ESC>", "<C-\\><C-N>", { buffer = args.buf, silent = true })
+				vim.keymap.set("t", "jk", "<C-\\><C-N>", { buffer = args.buf, silent = true })
+			end
+		end, 100)
+	end,
 })
 
-
--- telescope 
+-- telescope
 local builtin = require("telescope.builtin")
 
 map("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "telescope document symbols" })
 map("n", "<leader>fw", builtin.grep_string, { desc = "telescope find word" })
 -- map("n", "<leader>fg", builtin.live_grep, { desc = "telescope live grep" })
 
---harpoon 
+--harpoon
 local harpoon = require("harpoon")
 
 harpoon:setup()
 
-vim.keymap.set("n", "<leader>a",
-  function()
-    local buffer_name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-    if buffer_name ~= "" then
-      harpoon:list():add()
-      print("Added to harpoon:", buffer_name)
-    end
-  end,
-  { desc = "Harpoon: add" })
-vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon modal list" })
+vim.keymap.set("n", "<leader>a", function()
+	local buffer_name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+	if buffer_name ~= "" then
+		harpoon:list():add()
+		print("Added to harpoon:", buffer_name)
+	end
+end, { desc = "Harpoon: add" })
+vim.keymap.set("n", "<C-e>", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Harpoon modal list" })
 
 -- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
 -- vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
@@ -91,5 +90,21 @@ vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, si
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
 
-vim.api.nvim_set_keymap('n', '<leader>gB', ':Gitsigns toggle_current_line_blame<CR>', { noremap = true, silent = true, desc = "Toggle current line blame (inline)" })
-vim.api.nvim_set_keymap('n', '<leader>gb', ':Gitsigns blame_line<CR>', { noremap = true, silent = true, desc = "Blame current line (modal)" })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>gB",
+	":Gitsigns toggle_current_line_blame<CR>",
+	{ noremap = true, silent = true, desc = "Toggle current line blame (inline)" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>gb",
+	":Gitsigns blame_line<CR>",
+	{ noremap = true, silent = true, desc = "Blame current line (modal)" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>g<C-b>",
+	":Gitsigns blame<CR>",
+	{ noremap = true, silent = true, desc = "Blame current file" }
+)
