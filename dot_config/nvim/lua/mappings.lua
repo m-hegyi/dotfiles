@@ -81,7 +81,7 @@ end, { desc = "Harpoon modal list" })
 vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
 local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
-vim.keymap.set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor)
+vim.keymap.set("n", "<leader>gc", live_grep_args_shortcuts.grep_word_under_cursor, { desc = "Grep word under cursor"})
 
 vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>ga", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
@@ -92,19 +92,19 @@ vim.cmd([[cab cc CodeCompanion]])
 
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>gB",
-	":Gitsigns toggle_current_line_blame<CR>",
-	{ noremap = true, silent = true, desc = "Toggle current line blame (inline)" }
-)
-vim.api.nvim_set_keymap(
-	"n",
 	"<leader>gb",
 	":Gitsigns blame_line<CR>",
 	{ noremap = true, silent = true, desc = "Blame current line (modal)" }
 )
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>g<C-b>",
+	"<leader>gB",
 	":Gitsigns blame<CR>",
 	{ noremap = true, silent = true, desc = "Blame current file" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>g<C-b>",
+	":Gitsigns toggle_current_line_blame<CR>",
+	{ noremap = true, silent = true, desc = "Toggle current line blame (inline)" }
 )
