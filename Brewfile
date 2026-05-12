@@ -1,5 +1,6 @@
 brew "aider"
 brew "bash"
+brew "extract_url"
 brew "ruby"
 brew "fd"
 brew "ffmpeg"
