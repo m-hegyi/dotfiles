@@ -88,3 +88,18 @@ function EditLineFromLazygit(file_path, line)
         vim.cmd(tostring(line))
     end
 end
+
+vim.api.nvim_create_autocmd("TermClose", {
+  pattern = "*lazygit*",
+  callback = function()
+    local f = io.open("/tmp/nvim_worktree_switch", "r")
+    if not f then return end
+    local path = f:read("*l")
+    f:close()
+    os.remove("/tmp/nvim_worktree_switch")
+    if path and path ~= "" then
+      vim.fn.chdir(path)
+      -- vim.cmd("LspRestart")
+    end
+  end,
+})

@@ -1,3 +1,9 @@
 os:
-  edit: "nvim --server $NVIM --remote-send '<cmd>q<cr><cmd>lua EditFromLazygit({{filename}})<cr>'"
-  editAtLine: "nvim --server $NVIM --remote-send '<cmd>q<cr><cmd>lua EditLineFromLazygit({{filename}}, {{line}})<cr>'"
+  edit: "[ -n \"$NVIM\" ] && nvim --server $NVIM --remote-send '<cmd>q<cr><cmd>lua EditFromLazygit({{filename}})<cr>' || nvim {{filename}}"
+  editAtLine: "[ -n \"$NVIM\" ] && nvim --server $NVIM --remote-send '<cmd>q<cr><cmd>lua EditLineFromLazygit({{filename}}, {{line}})<cr>' || nvim +{{line}} {{filename}}"
+customCommands:
+  - key: "O"
+    context: "worktrees"
+    command: "printf '%s' '{{.SelectedWorktree.Path}}' > /tmp/nvim_worktree_switch"
+    description: "switch worktree (signals nvim to follow)"
+    output: terminal
