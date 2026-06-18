@@ -1,6 +1,10 @@
 run ~/.config/tmux/plugins/catppuccin/catppuccin.tmux
 run ~/.config/tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
-set -g @plugin 'tmux-plugins/tmux-urlview'
+run ~/.config/tmux/plugins/tmux-url-picker/tmux-url-picker.tmux
+# set -g @plugin 'tmux-plugins/tmux-urlview'
+
+# set default terminal mode
+set -g default-terminal "tmux-256color"
 
 unbind R 
 bind R source-file ~/.tmux.conf \; display "Reloaded!"
