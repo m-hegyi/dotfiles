@@ -226,5 +226,19 @@ return {
     keys = {
       { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
+  },
+  {
+    "joryeugene/dadbod-grip.nvim",
+    lazy = false,
+    dependencies = {
+      "tpope/vim-dadbod",
+    },
+    cmd = {
+      "Grip", "GripStart", "GripHome", "GripConnect", "GripSchema",
+      "GripTables", "GripQuery", "GripSave", "GripLoad", "GripHistory",
+      "GripProfile", "GripExplain", "GripAsk", "GripDiff", "GripCreate",
+      "GripDrop", "GripRename", "GripProperties", "GripExport",
+      "GripAttach", "GripDetach", "GripOpen",
+    },
   }
 }

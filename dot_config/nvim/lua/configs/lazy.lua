@@ -1,5 +1,8 @@
 return {
   defaults = { lazy = true },
+  pkg = {
+    sources = { "rockspec", "packspec" },
+  },
   install = { colorscheme = { "nvchad" } },
 
   ui = {
