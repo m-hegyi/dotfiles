@@ -1,3 +1,6 @@
+# load local configuration if it exists
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -190,3 +193,30 @@ alias lg="lazygit"
 alias ld="lazydocker"
 export PATH=$PATH:$HOME/trigger-cli
 {{- end }}
+
+{{- if eq .machine_type "work" }}
+function _tmux_rename_to_worktree_dir() {
+  if [ -n "$TMUX" ]; then
+    local git_dir
+    git_dir=$(git rev-parse --git-dir 2>/dev/null) || return
+    if [[ "$git_dir" != ".git" ]]; then
+      tmux rename-window "$(basename $PWD)"
+    fi
+  fi
+}
+add-zsh-hook chpwd _tmux_rename_to_worktree_dir
+{{- end }}
+
+wt() {
+  local no_cd=false args=()
+  for arg in "$@"; do
+    case "$arg" in
+      --help|-h) ~/code/scripts/new-worktree.sh --help; return ;;
+      --no-cd)   no_cd=true ;;
+      *)         args+=("$arg") ;;
+    esac
+  done
+  local dir
+  dir=$(~/code/scripts/new-worktree.sh "${args[@]}") || return 1
+  [[ "$no_cd" == false ]] && cd "$dir"
+}

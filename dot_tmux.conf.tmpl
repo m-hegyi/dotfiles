@@ -49,7 +49,7 @@ bind -r L resize-pane -R 5
 set -g base-index 1
 setw -g pane-base-index 1
 
-bind  c  new-window      -c "#{pane_current_path}"
+bind  c  new-window      -c "#{pane_current_path}" -n "#{b:pane_current_path}"
 bind  %  split-window -h -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
 
@@ -81,8 +81,9 @@ set -g @plugin 'tmux-plugins/tmux-cpu'
 run '~/.tmux/plugins/tpm/tpm'
 
 # Override catppuccin window status after plugins load
-set -g window-status-current-format "#[fg=#{@thm_mauve}] ◉ "
-set -g window-status-format "#[fg=#{@thm_overlay_2},bg=default] ● "
+set -g automatic-rename off
+set -g window-status-current-format "#[fg=#{@thm_mauve}] ◉ #{window_name} "
+set -g window-status-format "#[fg=#{@thm_overlay_2},bg=default] ● #{window_name} "
 set -g window-status-bell-style default
 set -g window-status-activity-style default
 set -g window-status-current-style none
