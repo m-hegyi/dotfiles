@@ -1,5 +1,6 @@
 brew "aider"
 brew "bash"
+brew "bob"
 brew "extract_url"
 brew "ruby"
 brew "fd"

@@ -207,6 +207,7 @@ function _tmux_rename_to_worktree_dir() {
 add-zsh-hook chpwd _tmux_rename_to_worktree_dir
 {{- end }}
 
+{{- if eq .machine_type "work" }}
 wt() {
   local no_cd=false args=()
   for arg in "$@"; do
@@ -220,3 +221,9 @@ wt() {
   dir=$(~/code/scripts/new-worktree.sh "${args[@]}") || return 1
   [[ "$no_cd" == false ]] && cd "$dir"
 }
+{{- end}}
+
+# Nvim v12 alias and environment setup
+alias nv="NVIM_APPNAME=nvim-v12 nvim"
+# TODO: check if this is the best way to set up the environment for nvim-v12, as it may not be necessary to source the env.sh file every time.
+. "/Users/mario.hegyi/.local/share/bob/env/env.sh"
