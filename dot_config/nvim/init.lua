@@ -38,40 +38,42 @@ vim.schedule(function()
   require "mappings"
 end)
 
-local harpoon = require('harpoon')
-harpoon:setup({})
+local harpoon = require "harpoon"
+harpoon:setup {}
 
 -- basic telescope configuration
 local conf = require("telescope.config").values
 local function toggle_telescope(harpoon_files)
-    local file_paths = {}
-    for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
-    end
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
 
-    require("telescope.pickers").new({}, {
-        prompt_title = "Harpoon",
-        finder = require("telescope.finders").new_table({
-            results = file_paths,
-        }),
-        previewer = conf.file_previewer({}),
-        sorter = conf.generic_sorter({}),
-    }):find()
+  require("telescope.pickers")
+    .new({}, {
+      prompt_title = "Harpoon",
+      finder = require("telescope.finders").new_table {
+        results = file_paths,
+      },
+      previewer = conf.file_previewer {},
+      sorter = conf.generic_sorter {},
+    })
+    :find()
 end
-require("telescope").load_extension("lazygit")
+require("telescope").load_extension "lazygit"
 
-vim.keymap.set("n", "<leader>fe", function() toggle_telescope(harpoon:list()) end,
-    { desc = "telescope harpoon marked list" })
+vim.keymap.set("n", "<leader>fe", function()
+  toggle_telescope(harpoon:list())
+end, { desc = "telescope harpoon marked list" })
 
 local get_option = vim.filetype.get_option
 vim.filetype.get_option = function(filetype, option)
-  return option == "commentstring"
-    and require("ts_context_commentstring.internal").calculate_commentstring()
+  return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
     or get_option(filetype, option)
 end
 
 function EditFromLazygit(file_path)
-  local path = vim.fn.expand("%:p")
+  local path = vim.fn.expand "%:p"
   if path == file_path then
     return
   else
@@ -80,23 +82,25 @@ function EditFromLazygit(file_path)
 end
 
 function EditLineFromLazygit(file_path, line)
-    local path = vim.fn.expand("%:p")
-    if path == file_path then
-        vim.cmd(tostring(line))
-    else
-        vim.cmd("e " .. file_path)
-        vim.cmd(tostring(line))
-    end
+  local path = vim.fn.expand "%:p"
+  if path == file_path then
+    vim.cmd(tostring(line))
+  else
+    vim.cmd("e " .. file_path)
+    vim.cmd(tostring(line))
+  end
 end
 
 vim.api.nvim_create_autocmd("TermClose", {
   pattern = "*lazygit*",
   callback = function()
     local f = io.open("/tmp/nvim_worktree_switch", "r")
-    if not f then return end
-    local path = f:read("*l")
+    if not f then
+      return
+    end
+    local path = f:read "*l"
     f:close()
-    os.remove("/tmp/nvim_worktree_switch")
+    os.remove "/tmp/nvim_worktree_switch"
     if path and path ~= "" then
       vim.fn.chdir(path)
       -- vim.cmd("LspRestart")
