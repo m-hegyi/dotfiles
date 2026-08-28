@@ -117,3 +117,7 @@ set -ga terminal-overrides ",xterm-ghostty:Tc"
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
 set -g bell-action any
+
+{{- if eq .machine_type "work"}}
+set -g @claude_tmux_status_title off
+{{- end }}
