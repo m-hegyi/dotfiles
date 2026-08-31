@@ -5,8 +5,6 @@ vim.g.mapleader = " "
 
 map("n", "<C-s>", "<cmd>write<CR>", { desc = "Write file" })
 
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
-
 -- vim-tmux navigator 
 map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
 map("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
@@ -18,3 +16,21 @@ map("i", "<C-h>", "<Left>", { desc = "move left" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 map("i", "<C-l>", "<Right>", { desc = "move right" })
+
+-- fff
+local fff = require('fff')
+map("n", "ff", function() fff.find_files() end, { desc = "FFFind files" })
+map("n", "fg", function() fff.live_grep() end, { desc = "Live grep" })
+
+-- built in select
+vim.keymap.set('n', '<leader>sh', function()
+  local tags = vim.fn.getcompletion('', 'help')
+
+  vim.ui.select(tags, {
+    prompt = 'Help: ',
+  }, function(tag)
+    if tag then
+      vim.cmd('help ' .. tag)
+    end
+  end)
+end, { desc = 'Search help' })
