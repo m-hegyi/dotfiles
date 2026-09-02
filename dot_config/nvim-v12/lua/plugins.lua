@@ -9,6 +9,7 @@ vim.pack.add({
   { src = 'https://github.com/dmtrKovalenko/fff' },
   { src = 'https://github.com/nvim-mini/mini.icons', version = 'stable' },
   { src = 'https://github.com/stevearc/oil.nvim' },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter' }
 })
 
 require('mason').setup()
