@@ -12,6 +12,7 @@ vim.pack.add({
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
   -- Do I really need this extra picker?
   { src = 'https://github.com/nvim-mini/mini.pick' },
+  { src = 'https://github.com/folliehiyuki/diffview.nvim', version = 'mini-icons' },
 })
 
 require('mason').setup()

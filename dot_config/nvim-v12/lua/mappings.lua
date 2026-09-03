@@ -17,6 +17,10 @@ map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 map("i", "<C-l>", "<Right>", { desc = "move right" })
 
+-- Visual mode: Move selected lines up/down
+map("v", "<C-j>", ":move '>+1<CR>gv", { noremap = true, silent = true, desc = "Move line(s) down" })
+map("v", "<C-k>", ":move '<-2<CR>gv", { noremap = true, silent = true, desc = "Move line(s) up" })
+
 -- fff
 local fff = require('fff')
 map("n", "ff", function() fff.find_files() end, { desc = "FFFind files" })
