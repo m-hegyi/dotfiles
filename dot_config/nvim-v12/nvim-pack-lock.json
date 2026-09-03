@@ -8,10 +8,6 @@
       "rev": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b",
       "src": "https://github.com/saghen/blink.lib"
     },
-    "blink.pairs": {
-      "rev": "dd57684daf1297e854e46c85511e7875efb4de75",
-      "src": "https://github.com/saghen/blink.pairs"
-    },
     "diffview.nvim": {
       "rev": "43106c233e017242ce9a6abfa05ed30d701926a7",
       "src": "https://github.com/folliehiyuki/diffview.nvim",
@@ -34,9 +30,17 @@
       "src": "https://github.com/nvim-mini/mini.icons",
       "version": "'stable'"
     },
+    "mini.pairs": {
+      "rev": "b1c5a726921b7a8c9321e9a7a208aa0571de5810",
+      "src": "https://github.com/nvim-mini/mini.pairs"
+    },
     "mini.pick": {
       "rev": "b27dc13b3d6dafc10e868b6ddc682cc4f047f4d1",
       "src": "https://github.com/nvim-mini/mini.pick"
+    },
+    "mini.surround": {
+      "rev": "8d5d0c5aa92449368ac251e85451d79d8f69d296",
+      "src": "https://github.com/nvim-mini/mini.surround"
     },
     "nvim-lspconfig": {
       "rev": "af9adce488c75ca0a81017945c2b7fa7b461bc23",

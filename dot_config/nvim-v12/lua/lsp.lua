@@ -26,14 +26,5 @@ vim.lsp.config('ruff', {
   end,
 })
 
-vim.lsp.config('biome', {
-  offset_encoding = 'utf-32',
-  init_options = {
-    settings = {
-      offset_encoding = 'UTF-32'
-    }
-  }
-})
-
 vim.lsp.enable({'lua_ls', 'html', 'ts_ls', 'pyright', 'ruff', 'biome'})
 vim.diagnostic.config({ virtual_text = true })

@@ -5,7 +5,6 @@ vim.pack.add({
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
   { src = 'https://github.com/saghen/blink.lib' },
   { src = 'https://github.com/saghen/blink.cmp' },
-  { src = 'https://github.com/saghen/blink.pairs' },
   { src = 'https://github.com/dmtrKovalenko/fff' },
   { src = 'https://github.com/nvim-mini/mini.icons', version = 'stable' },
   { src = 'https://github.com/stevearc/oil.nvim' },
@@ -13,14 +12,14 @@ vim.pack.add({
   -- Do I really need this extra picker?
   { src = 'https://github.com/nvim-mini/mini.pick' },
   { src = 'https://github.com/folliehiyuki/diffview.nvim', version = 'mini-icons' },
+  { src = 'https://github.com/nvim-mini/mini.pairs' },
+  { src = 'https://github.com/nvim-mini/mini.surround' },
 })
 
 require('mason').setup()
 require('gitsigns').setup()
-
-local pairs = require('blink.pairs')
-pairs.build():pwait()
-pairs.setup()
+require('mini.pairs').setup()
+require('mini.surround').setup()
 
 -- require('fff.download').download_or_build_binary()
 require('fff').setup({
