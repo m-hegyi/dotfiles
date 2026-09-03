@@ -6,3 +6,4 @@ require('mappings')
 require('lsp')
 
 require('config/treesitter')
+require('config/blink-cmp')

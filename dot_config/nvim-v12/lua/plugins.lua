@@ -9,22 +9,14 @@ vim.pack.add({
   { src = 'https://github.com/dmtrKovalenko/fff' },
   { src = 'https://github.com/nvim-mini/mini.icons', version = 'stable' },
   { src = 'https://github.com/stevearc/oil.nvim' },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter' }
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+  -- Do I really need this extra picker?
+  { src = 'https://github.com/nvim-mini/mini.pick' },
 })
 
 require('mason').setup()
 require('gitsigns').setup()
 
-local cmp = require('blink.cmp')
-cmp.build():pwait()
-cmp.setup({
-  completion = {
-    list = { selection = { preselect = false, auto_insert = true } },
-  },
-  keymap = {
-    preset = 'default',
-  },
-})
 local pairs = require('blink.pairs')
 pairs.build():pwait()
 pairs.setup()
@@ -39,3 +31,4 @@ require('fff').setup({
 
 require('mini.icons').setup()
 require('oil').setup()
+require('mini.pick').setup()

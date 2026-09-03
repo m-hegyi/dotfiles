@@ -29,6 +29,10 @@
       "src": "https://github.com/nvim-mini/mini.icons",
       "version": "'stable'"
     },
+    "mini.pick": {
+      "rev": "b27dc13b3d6dafc10e868b6ddc682cc4f047f4d1",
+      "src": "https://github.com/nvim-mini/mini.pick"
+    },
     "nvim-lspconfig": {
       "rev": "af9adce488c75ca0a81017945c2b7fa7b461bc23",
       "src": "https://github.com/neovim/nvim-lspconfig"
