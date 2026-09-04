@@ -11,11 +11,17 @@ map("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
 map("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
 map("n", "<C-l>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
 
--- navigation
+-- Insert navigation
 map("i", "<C-h>", "<Left>", { desc = "move left" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 map("i", "<C-l>", "<Right>", { desc = "move right" })
+
+-- CMD line navigation
+map("c", "<C-h>", "<Left>", { desc = "move left" })
+map("c", "<C-j>", "<Down>", { desc = "move down" })
+map("c", "<C-k>", "<Up>", { desc = "move up" })
+map("c", "<C-l>", "<Right>", { desc = "move right" })
 
 -- Visual mode: Move selected lines up/down
 map("v", "<C-j>", ":move '>+1<CR>gv", { noremap = true, silent = true, desc = "Move line(s) down" })
