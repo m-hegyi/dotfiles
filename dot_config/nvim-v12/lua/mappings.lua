@@ -4,6 +4,7 @@ local map = vim.keymap.set
 vim.g.mapleader = " "
 
 map("n", "<C-s>", "<cmd>write<CR>", { desc = "Write file" })
+map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General clear highlight" })
 
 -- vim-tmux navigator 
 map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })

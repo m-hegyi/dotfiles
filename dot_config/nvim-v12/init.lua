@@ -7,3 +7,4 @@ require('lsp')
 
 require('config/treesitter')
 require('config/blink-cmp')
+require('config/oil')

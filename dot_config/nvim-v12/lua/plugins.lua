@@ -30,5 +30,4 @@ require('fff').setup({
 })
 
 require('mini.icons').setup()
-require('oil').setup()
 require('mini.pick').setup()
