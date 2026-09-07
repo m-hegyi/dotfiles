@@ -1,3 +1,6 @@
+-- colorscheme
+vim.cmd.colorscheme('catppuccin')
+
 vim.opt.ignorecase = true -- Ignore case in search
 vim.opt.clipboard = "unnamedplus" -- All to copy yanked text into system clipboard
 
