@@ -1,7 +1,9 @@
 -- colorscheme
 vim.cmd.colorscheme('catppuccin-nvim')
 
-vim.api.nvim_set_hl(0, "LineNr", { fg = "#a6adc8" }) -- override the lineNumber color
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffffff" })-- override the lineNumber color
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#a6adc8" }) -- override the lineNumber before cursor
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#a6adc8" }) -- override the lineNumber after cursor
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
