@@ -1,7 +1,12 @@
 -- colorscheme
 vim.cmd.colorscheme('catppuccin')
 
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+
 vim.opt.ignorecase = true -- Ignore case in search
+vim.opt.smartcase = true -- Case sensitive if uppercase in search
 vim.opt.clipboard = "unnamedplus" -- All to copy yanked text into system clipboard
 
 vim.opt.list = true -- show whitespace characters
@@ -11,14 +16,21 @@ vim.opt.tabstop = 2 -- default number of spaces for a tab
 vim.opt.softtabstop = 2 -- Number of spaces for a tab when editing
 vim.opt.shiftwidth = 2 -- Number of spaces for autoindent
 
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
 
+vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 
 vim.opt.signcolumn = "yes"
+
+vim.opt.showtabline = 1
+vim.opt.confirm = true
 
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", {
   undercurl = true,

@@ -7,10 +7,10 @@ map("n", "<C-s>", "<cmd>write<CR>", { desc = "Write file" })
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General clear highlight" })
 
 -- vim-tmux navigator 
-map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
-map("n", "<C-j>", ":TmuxNavigateDown<CR>", { noremap = true, silent = true })
-map("n", "<C-k>", ":TmuxNavigateUp<CR>", { noremap = true, silent = true })
-map("n", "<C-l>", ":TmuxNavigateLeft<CR>", { noremap = true, silent = true })
+map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { silent = true })
+map("n", "<C-j>", ":TmuxNavigateDown<CR>", { silent = true })
+map("n", "<C-k>", ":TmuxNavigateUp<CR>", { silent = true })
+map("n", "<C-l>", ":TmuxNavigateRight<CR>", { silent = true })
 
 -- Insert navigation
 map("i", "<C-h>", "<Left>", { desc = "move left" })
@@ -25,8 +25,11 @@ map("c", "<C-k>", "<Up>", { desc = "move up" })
 map("c", "<C-l>", "<Right>", { desc = "move right" })
 
 -- Visual mode: Move selected lines up/down
-map("v", "<C-j>", ":move '>+1<CR>gv", { noremap = true, silent = true, desc = "Move line(s) down" })
-map("v", "<C-k>", ":move '<-2<CR>gv", { noremap = true, silent = true, desc = "Move line(s) up" })
+map("v", "<C-j>", ":move '>+1<CR>gv", { silent = true, desc = "Move line(s) down" })
+map("v", "<C-k>", ":move '<-2<CR>gv", { silent = true, desc = "Move line(s) up" })
+
+-- Lsp-
+map("n", "grd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Jump to definition" })
 
 -- fff
 local fff = require('fff')
