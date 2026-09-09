@@ -67,3 +67,6 @@ palette = 9=#e64553
 minimum-contrast = 1.1
 
 bell-features = system
+
+background-opacity = 0.8
+background-blur = true
