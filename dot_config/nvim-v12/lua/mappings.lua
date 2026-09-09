@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 map("n", "<C-s>", "<cmd>write<CR>", { desc = "Write file" })
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General clear highlight" })
 
--- vim-tmux navigator 
+-- vim-tmux navigator
 map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { silent = true })
 map("n", "<C-j>", ":TmuxNavigateDown<CR>", { silent = true })
 map("n", "<C-k>", ":TmuxNavigateUp<CR>", { silent = true })
@@ -35,6 +35,9 @@ map("n", "grd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Jump to defin
 local fff = require('fff')
 map("n", "ff", function() fff.find_files() end, { desc = "FFFind files" })
 map("n", "fg", function() fff.live_grep() end, { desc = "Live grep" })
+
+-- oil
+map("n", "-", "<cmd>e .<CR>", { desc = "Open Oil" })
 
 -- built in select
 vim.keymap.set('n', '<leader>sh', function()

@@ -1,5 +1,7 @@
 -- colorscheme
-vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('catppuccin-nvim')
+
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#a6adc8" }) -- override the lineNumber color
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
@@ -94,7 +96,6 @@ local function hasLspClient(name)
 
   return false
 end
-
 
 local function biomeReportToQfList(diagnostics)
   local qf_items = {}

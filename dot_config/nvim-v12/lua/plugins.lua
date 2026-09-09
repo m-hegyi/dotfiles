@@ -14,6 +14,8 @@ vim.pack.add({
   { src = 'https://github.com/folliehiyuki/diffview.nvim', version = 'mini-icons' },
   { src = 'https://github.com/nvim-mini/mini.pairs' },
   { src = 'https://github.com/nvim-mini/mini.surround' },
+  { src = 'https://github.com/windwp/nvim-ts-autotag' },
+  { src = 'https://github.com/catppuccin/nvim' },
 })
 
 require('mason').setup()
@@ -31,3 +33,5 @@ require('fff').setup({
 
 require('mini.icons').setup()
 require('mini.pick').setup()
+require('nvim-ts-autotag').setup()
+require('catppuccin').setup()

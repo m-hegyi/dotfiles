@@ -1,10 +1,14 @@
 require('nvim-treesitter').install({
   'lua',
+  'html',
+  'html_tags',
   'python',
   'javascript',
+  'jsx',
   'typescript',
+  'tsx',
   'vim',
-  'vimdoc'
+  'vimdoc',
 })
 
 vim.api.nvim_create_autocmd("FileType", {
