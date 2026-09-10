@@ -16,6 +16,7 @@ vim.pack.add({
   { src = 'https://github.com/nvim-mini/mini.surround' },
   { src = 'https://github.com/windwp/nvim-ts-autotag' },
   { src = 'https://github.com/catppuccin/nvim' },
+  { src = 'https://github.com/github/copilot.vim' },
 })
 
 require('mason').setup()
