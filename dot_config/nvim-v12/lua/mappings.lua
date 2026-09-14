@@ -38,6 +38,10 @@ map("n", "fg", function() fff.live_grep() end, { desc = "Live grep" })
 
 -- oil
 map("n", "-", "<cmd>e .<CR>", { desc = "Open Oil" })
+map("n", "<C-_>", function () require("oil").open() end, { desc = "Open Oil in the current buffers' path" })
+
+-- lazygit
+map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Open lazygit" })
 
 -- built in select
 vim.keymap.set('n', '<leader>sh', function()

@@ -17,6 +17,7 @@ vim.pack.add({
   { src = 'https://github.com/windwp/nvim-ts-autotag' },
   { src = 'https://github.com/catppuccin/nvim' },
   { src = 'https://github.com/github/copilot.vim' },
+  { src = 'https://github.com/kdheepak/lazygit.nvim' },
 })
 
 require('mason').setup()

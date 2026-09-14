@@ -4,6 +4,7 @@ require('plugins')
 require('configs')
 require('mappings')
 require('lsp')
+require('autocmds')
 
 require('config/treesitter')
 require('config/blink-cmp')

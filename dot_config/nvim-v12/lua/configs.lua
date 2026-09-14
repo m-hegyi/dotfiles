@@ -125,7 +125,7 @@ vim.api.nvim_create_user_command("BiomeCheck", function ()
   end
 
   local file = vim.fn.expand('%')
-  local output = vim.fn.system('biome check --reporter=rdjson ' .. file)
+  local output = vim.fn.system('pnpm exec biome check --reporter=rdjson ' .. file)
 
   local json_str = extract_json(output)
 
@@ -150,15 +150,7 @@ vim.api.nvim_create_user_command("BiomeFix", function ()
   end
 
   local file = vim.fn.expand('%')
-  local output = vim.fn.system('biome check --write --reporter=rdjson' .. file)
-
-  local json_str = extract_json(output)
-  local ok, result = pcall(vim.fn.json_decode, json_str)
-
-  if not ok or not result.diagnostics then
-    vim.notify('BiomeFix: Something was not ok', vim.log.levels.ERROR)
-    return
-  end
+  vim.fn.system('pnpm exec biome check --write ' .. file)
 
   vim.cmd('e')
 end, {})
